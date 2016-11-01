@@ -38,7 +38,7 @@ namespace Associates_Rest.Infrastructure
       var appDbContext = context.Get<ApplicationDbContext>();
       var appUserManager = new ApplicationUserManager(new UserStore<ApplicationUser>(appDbContext));
 
-      appUserManager.EmailService = new Workforce.Logic.Felice.Domain.EmailService();
+      appUserManager.EmailService = new Associates_Domain.Services.EmailService();
       var dataProtectionProvider = options.DataProtectionProvider;
       if(dataProtectionProvider != null)
       {

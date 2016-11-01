@@ -8,14 +8,14 @@ namespace Workforce.Logic.Felice.Rest.Migrations
   using System.Linq;
   using Associates_Rest.Infrastructure;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Workforce.Logic.Felice.Rest.Infrastructure.ApplicationDbContext>
+  internal sealed class Configuration : DbMigrationsConfiguration<Associates_Rest.Infrastructure.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Workforce.Logic.Felice.Rest.Infrastructure.ApplicationDbContext context)
+        protected override void Seed(Associates_Rest.Infrastructure.ApplicationDbContext context)
         {
           //This method will be called after migrating to the latest version.
           var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
