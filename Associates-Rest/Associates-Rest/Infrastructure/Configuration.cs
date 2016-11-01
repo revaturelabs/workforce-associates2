@@ -6,7 +6,7 @@ namespace Workforce.Logic.Felice.Rest.Migrations
   using System.Data.Entity;
   using System.Data.Entity.Migrations;
   using System.Linq;
-  using Workforce.Logic.Felice.Rest.Infrastructure;
+  using Associates_Rest.Infrastructure;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Workforce.Logic.Felice.Rest.Infrastructure.ApplicationDbContext>
     {

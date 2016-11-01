@@ -8,7 +8,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Workforce.Logic.Felice.Rest.Infrastructure
+namespace Associates_Rest.Infrastructure
 {
   /// <summary>
   /// This will have the properties
