@@ -147,9 +147,9 @@
     <EmbeddedResource Include="Migrations\201609222340263_InitialCreate.resx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Associates-Domain\Associates-Domain.csproj">
+    <ProjectReference Include="..\Associates-Domain\Associates.Domain.csproj">
       <Project>{99dcdf9b-9461-4dc2-9c72-3b70b5cecd3b}</Project>
-      <Name>Associates-Domain</Name>
+      <Name>Associates.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Associates-Rest", "Associates-Rest\Associates-Rest.csproj", "{FA33E240-8699-45A5-BECA-3F9368B73457}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Associates.Rest", "Associates-Rest\Associates.Rest.csproj", "{FA33E240-8699-45A5-BECA-3F9368B73457}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Associates-Domain", "Associates-Domain\Associates-Domain.csproj", "{99DCDF9B-9461-4DC2-9C72-3B70B5CECD3B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Associates.Domain", "Associates-Domain\Associates.Domain.csproj", "{99DCDF9B-9461-4DC2-9C72-3B70B5CECD3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

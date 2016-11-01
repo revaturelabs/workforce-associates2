@@ -1,4 +1,4 @@
-namespace Workforce.Logic.Felice.Rest.Migrations
+namespace Associates.Rest.Migrations
 {
   using Microsoft.AspNet.Identity;
   using Microsoft.AspNet.Identity.EntityFramework;
@@ -6,16 +6,16 @@ namespace Workforce.Logic.Felice.Rest.Migrations
   using System.Data.Entity;
   using System.Data.Entity.Migrations;
   using System.Linq;
-  using Associates_Rest.Infrastructure;
+  using Associates.Rest.Infrastructure;
 
-  internal sealed class Configuration : DbMigrationsConfiguration<Associates_Rest.Infrastructure.ApplicationDbContext>
+  internal sealed class Configuration : DbMigrationsConfiguration<Associates.Rest.Infrastructure.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Associates_Rest.Infrastructure.ApplicationDbContext context)
+        protected override void Seed(Associates.Rest.Infrastructure.ApplicationDbContext context)
         {
           //This method will be called after migrating to the latest version.
           var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
