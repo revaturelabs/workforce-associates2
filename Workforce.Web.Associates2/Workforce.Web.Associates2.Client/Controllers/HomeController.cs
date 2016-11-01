@@ -6,12 +6,11 @@ using System.Web.Mvc;
 
 namespace Workforce.Web.Associates2.Client.Controllers
 {
-    public class HomeController : Controller
+  public class HomeController : Controller
+  {
+    public ActionResult Index()
     {
-        // GET: Home
-        public ActionResult Index()
-        {
-            return View();
-        }
+      return View();
     }
+  }
 }
