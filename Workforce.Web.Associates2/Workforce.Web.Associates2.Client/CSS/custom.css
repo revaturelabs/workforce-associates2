@@ -1,0 +1,89 @@
+﻿body {
+  padding-bottom: 20px;
+  font-family: 'futura-pt';
+  font-size: 18px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+textarea {
+  max-width: 280px;
+}
+
+select {
+  width: 100%;
+  height: 100%;
+}
+
+#footer {
+  text-align: center;
+}
+
+h1, h2, h3, h4 {
+  text-align: center;
+  letter-spacing: .10em;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.menu-left-and-right {
+  color: rgb(242, 105, 37);
+  font-size: 1.5em;
+}
+
+  .menu-left-and-right:hover {
+    color: white;
+    background: black;
+    border-radius: 3px;
+    -o-transition: color .25s ease-out, background .25s ease-in;
+    -ms-transition: color .25s ease-out, background .25s ease-in;
+    -moz-transition: color .25s ease-out, background .25s ease-in;
+    -webkit-transition: color .25s ease-out, background .25s ease-in;
+    /* ...and now override with proper CSS property */
+    transition: color .25s ease-out, background .25s ease-in;
+  }
+
+.jumbotron {
+  background-color: white;
+  border: solid 5px gray;
+}
+
+#add-associate-btn{
+  letter-spacing: 0em;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#LoginWell {
+  background: rgba(255,255,255,1);
+  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(237,237,237,1)));
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+  background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 );
+  box-shadow: 3px 4px 5px 6px #808080;
+}
+
+#LoginHeader {
+  font-size: 70px;
+  color: rgb(242, 105, 37);
+}
+
+option:checked {
+  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  color: white;
+}
+
+.form-control {
+  display: inline;
+}
+
+Orange-read-btn {
+}
