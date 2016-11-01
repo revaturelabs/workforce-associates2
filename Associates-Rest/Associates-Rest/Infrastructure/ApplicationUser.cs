@@ -8,7 +8,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Associates_Rest.Infrastructure
+namespace Associates.Rest.Infrastructure
 {
   /// <summary>
   /// This will have the properties

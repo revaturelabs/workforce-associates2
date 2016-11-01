@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Associates_Rest.Infrastructure
+namespace Associates.Rest.Infrastructure
 {
   public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
   {
