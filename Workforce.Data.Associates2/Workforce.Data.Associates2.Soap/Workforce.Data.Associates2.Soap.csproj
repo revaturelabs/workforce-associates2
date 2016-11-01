@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A64F9A42-B446-4016-8D27-435919728202}</ProjectGuid>
+    <ProjectGuid>{DC366555-B0F5-40AE-884C-6FE72B007C82}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -84,6 +84,19 @@
     <Compile Include="IAssociateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceMapper\EfMapper.cs" />
+    <Compile Include="ServiceModels\AddressDao.cs" />
+    <Compile Include="ServiceModels\AssociateAddressDao.cs" />
+    <Compile Include="ServiceModels\AssociateDao.cs" />
+    <Compile Include="ServiceModels\BatchDao.cs" />
+    <Compile Include="ServiceModels\GenderDao.cs" />
+    <Compile Include="ServiceModels\InstructorDao.cs" />
+    <Compile Include="Validators\AddressVal.cs" />
+    <Compile Include="Validators\AssociateAddressVal.cs" />
+    <Compile Include="Validators\AssociateVal.cs" />
+    <Compile Include="Validators\BatchVal.cs" />
+    <Compile Include="Validators\CoreValidator.cs" />
+    <Compile Include="Validators\GenderVal.cs" />
+    <Compile Include="Validators\InstructorVal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -99,7 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Workforce.Data.Associates2.Domain\Workforce.Data.Associates2.Domain.csproj">
-      <Project>{687340ad-6aa1-4e39-9208-fe565989f576}</Project>
+      <Project>{687340AD-6AA1-4E39-9208-FE565989F576}</Project>
       <Name>Workforce.Data.Associates2.Domain</Name>
     </ProjectReference>
   </ItemGroup>
@@ -116,7 +129,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50456</DevelopmentServerPort>
+          <DevelopmentServerPort>53683</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:50456/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

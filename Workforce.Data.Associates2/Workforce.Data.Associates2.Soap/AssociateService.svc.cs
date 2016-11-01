@@ -6,12 +6,15 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using Workforce.Data.Associates2.Domain;
+using Workforce.Data.Associates2.Soap.ServiceMapper;
+using Workforce.Data.Associates2.Soap.ServiceModels;
+using Workforce.Data.Associates2.Soap.Validators;
 
 namespace Workforce.Data.Associates2.Soap
 {
-  // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "FeliceService" in code, svc and config file together.
-  // NOTE: In order to launch WCF Test Client for testing this service, please select FeliceService.svc or FeliceService.svc.cs at the Solution Explorer and start debugging.
-  public class FeliceService : IFeliceService
+  // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
+  // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
+  public class Service1 : IAssociateService
   {
     private readonly AccessHelper ac = new AccessHelper();
     private readonly EfMapper emap = new EfMapper();
