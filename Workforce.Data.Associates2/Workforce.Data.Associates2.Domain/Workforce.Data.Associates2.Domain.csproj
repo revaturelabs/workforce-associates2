@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="Web.Config" />
     <None Include="AssociateModel.edmx.diagram">
       <DependentUpon>AssociateModel.edmx</DependentUpon>
     </None>

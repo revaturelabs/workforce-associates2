@@ -73,7 +73,8 @@
     <Compile Include="SoapTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.Config" />
+    <None Include="Web.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
