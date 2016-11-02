@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjectFeliceDB_TestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Primary" Type="bit" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="zipcode" Type="nvarchar" MaxLength="20" />
+          <Property Name="address1" Type="nvarchar" MaxLength="200" />
+          <Property Name="address2" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Associate">
+          <Key>
+            <PropertyRef Name="AssociateID" />
+          </Key>
+          <Property Name="AssociateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GenderID" Type="int" Nullable="false" />
+          <Property Name="BatchID" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="Email" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="HasCar" Type="bit" Nullable="false" />
+          <Property Name="HasKeys" Type="bit" Nullable="false" />
+          <Property Name="IsComing" Type="bit" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssociateAddress">
+          <Key>
+            <PropertyRef Name="AssociateAddressID" />
+          </Key>
+          <Property Name="AssociateAddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssociateID" Type="int" Nullable="false" />
+          <Property Name="AddressID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="BatchId" />
+          </Key>
+          <Property Name="BatchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Instructor" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Section" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Instructor">
+          <Key>
+            <PropertyRef Name="InstructorId" />
+          </Key>
+          <Property Name="InstructorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Associate_Batch">
+          <End Role="Batch" Type="Self.Batch" Multiplicity="1" />
+          <End Role="Associate" Type="Self.Associate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="BatchId" />
+            </Principal>
+            <Dependent Role="Associate">
+              <PropertyRef Name="BatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Associate_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Associate" Type="Self.Associate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderId" />
+            </Principal>
+            <Dependent Role="Associate">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssociateAddress_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="AssociateAddress" Type="Self.AssociateAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="AssociateAddress">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssociateAddress_Associate">
+          <End Role="Associate" Type="Self.Associate" Multiplicity="1" />
+          <End Role="AssociateAddress" Type="Self.AssociateAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Associate">
+              <PropertyRef Name="AssociateID" />
+            </Principal>
+            <Dependent Role="AssociateAddress">
+              <PropertyRef Name="AssociateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batch_Instructor">
+          <End Role="Instructor" Type="Self.Instructor" Multiplicity="1" />
+          <End Role="Batch" Type="Self.Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructor">
+              <PropertyRef Name="InstructorId" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="Instructor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectFeliceDB_TestModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="Onboarding" store:Type="Tables" />
+          <EntitySet Name="Associate" EntityType="Self.Associate" Schema="Onboarding" store:Type="Tables" />
+          <EntitySet Name="AssociateAddress" EntityType="Self.AssociateAddress" Schema="Onboarding" store:Type="Tables" />
+          <EntitySet Name="Batch" EntityType="Self.Batch" Schema="Onboarding" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="Onboarding" store:Type="Tables" />
+          <EntitySet Name="Instructor" EntityType="Self.Instructor" Schema="Onboarding" store:Type="Tables" />
+          <AssociationSet Name="FK_Associate_Batch" Association="Self.FK_Associate_Batch">
+            <End Role="Batch" EntitySet="Batch" />
+            <End Role="Associate" EntitySet="Associate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Associate_Gender" Association="Self.FK_Associate_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Associate" EntitySet="Associate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssociateAddress_Address" Association="Self.FK_AssociateAddress_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="AssociateAddress" EntitySet="AssociateAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssociateAddress_Associate" Association="Self.FK_AssociateAddress_Associate">
+            <End Role="Associate" EntitySet="Associate" />
+            <End Role="AssociateAddress" EntitySet="AssociateAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batch_Instructor" Association="Self.FK_Batch_Instructor">
+            <End Role="Instructor" EntitySet="Instructor" />
+            <End Role="Batch" EntitySet="Batch" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectFeliceDB_TestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Primary" Type="Boolean" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="zipcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="address1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="address2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AssociateAddress" Relationship="Self.FK_AssociateAddress_Address" FromRole="Address" ToRole="AssociateAddress" />
+        </EntityType>
+        <EntityType Name="Associate">
+          <Key>
+            <PropertyRef Name="AssociateID" />
+          </Key>
+          <Property Name="AssociateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GenderID" Type="Int32" Nullable="false" />
+          <Property Name="BatchID" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="HasCar" Type="Boolean" Nullable="false" />
+          <Property Name="HasKeys" Type="Boolean" Nullable="false" />
+          <Property Name="IsComing" Type="Boolean" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Batch" Relationship="Self.FK_Associate_Batch" FromRole="Associate" ToRole="Batch" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Associate_Gender" FromRole="Associate" ToRole="Gender" />
+          <NavigationProperty Name="AssociateAddress" Relationship="Self.FK_AssociateAddress_Associate" FromRole="Associate" ToRole="AssociateAddress" />
+        </EntityType>
+        <EntityType Name="AssociateAddress">
+          <Key>
+            <PropertyRef Name="AssociateAddressID" />
+          </Key>
+          <Property Name="AssociateAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssociateID" Type="Int32" Nullable="false" />
+          <Property Name="AddressID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_AssociateAddress_Address" FromRole="AssociateAddress" ToRole="Address" />
+          <NavigationProperty Name="Associate" Relationship="Self.FK_AssociateAddress_Associate" FromRole="AssociateAddress" ToRole="Associate" />
+        </EntityType>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="BatchId" />
+          </Key>
+          <Property Name="BatchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Instructor" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Section" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Associate" Relationship="Self.FK_Associate_Batch" FromRole="Batch" ToRole="Associate" />
+          <NavigationProperty Name="Instructor1" Relationship="Self.FK_Batch_Instructor" FromRole="Batch" ToRole="Instructor" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Associate" Relationship="Self.FK_Associate_Gender" FromRole="Gender" ToRole="Associate" />
+        </EntityType>
+        <EntityType Name="Instructor">
+          <Key>
+            <PropertyRef Name="InstructorId" />
+          </Key>
+          <Property Name="InstructorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Batch" Relationship="Self.FK_Batch_Instructor" FromRole="Instructor" ToRole="Batch" />
+        </EntityType>
+        <Association Name="FK_AssociateAddress_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="AssociateAddress" Type="Self.AssociateAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="AssociateAddress">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Associate_Batch">
+          <End Role="Batch" Type="Self.Batch" Multiplicity="1" />
+          <End Role="Associate" Type="Self.Associate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="BatchId" />
+            </Principal>
+            <Dependent Role="Associate">
+              <PropertyRef Name="BatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Associate_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Associate" Type="Self.Associate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderId" />
+            </Principal>
+            <Dependent Role="Associate">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssociateAddress_Associate">
+          <End Role="Associate" Type="Self.Associate" Multiplicity="1" />
+          <End Role="AssociateAddress" Type="Self.AssociateAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Associate">
+              <PropertyRef Name="AssociateID" />
+            </Principal>
+            <Dependent Role="AssociateAddress">
+              <PropertyRef Name="AssociateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batch_Instructor">
+          <End Role="Instructor" Type="Self.Instructor" Multiplicity="1" />
+          <End Role="Batch" Type="Self.Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructor">
+              <PropertyRef Name="InstructorId" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="Instructor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectFeliceDB_TestEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Address" EntityType="Self.Address" />
+          <EntitySet Name="Associate" EntityType="Self.Associate" />
+          <EntitySet Name="AssociateAddress" EntityType="Self.AssociateAddress" />
+          <EntitySet Name="Batch" EntityType="Self.Batch" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="Instructor" EntityType="Self.Instructor" />
+          <AssociationSet Name="FK_AssociateAddress_Address" Association="Self.FK_AssociateAddress_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="AssociateAddress" EntitySet="AssociateAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Associate_Batch" Association="Self.FK_Associate_Batch">
+            <End Role="Batch" EntitySet="Batch" />
+            <End Role="Associate" EntitySet="Associate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Associate_Gender" Association="Self.FK_Associate_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Associate" EntitySet="Associate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssociateAddress_Associate" Association="Self.FK_AssociateAddress_Associate">
+            <End Role="Associate" EntitySet="Associate" />
+            <End Role="AssociateAddress" EntitySet="AssociateAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batch_Instructor" Association="Self.FK_Batch_Instructor">
+            <End Role="Instructor" EntitySet="Instructor" />
+            <End Role="Batch" EntitySet="Batch" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectFeliceDB_TestModelStoreContainer" CdmEntityContainer="ProjectFeliceDB_TestEntities">
+          <EntitySetMapping Name="Address">
+            <EntityTypeMapping TypeName="ProjectFeliceDB_TestModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Primary" ColumnName="Primary" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+                <ScalarProperty Name="address1" ColumnName="address1" />
+                <ScalarProperty Name="address2" ColumnName="address2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Associate">
+            <EntityTypeMapping TypeName="ProjectFeliceDB_TestModel.Associate">
+              <MappingFragment StoreEntitySet="Associate">
+                <ScalarProperty Name="AssociateID" ColumnName="AssociateID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="HasCar" ColumnName="HasCar" />
+                <ScalarProperty Name="HasKeys" ColumnName="HasKeys" />
+                <ScalarProperty Name="IsComing" ColumnName="IsComing" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssociateAddress">
+            <EntityTypeMapping TypeName="ProjectFeliceDB_TestModel.AssociateAddress">
+              <MappingFragment StoreEntitySet="AssociateAddress">
+                <ScalarProperty Name="AssociateAddressID" ColumnName="AssociateAddressID" />
+                <ScalarProperty Name="AssociateID" ColumnName="AssociateID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Batch">
+            <EntityTypeMapping TypeName="ProjectFeliceDB_TestModel.Batch">
+              <MappingFragment StoreEntitySet="Batch">
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="ProjectFeliceDB_TestModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Instructor">
+            <EntityTypeMapping TypeName="ProjectFeliceDB_TestModel.Instructor">
+              <MappingFragment StoreEntitySet="Instructor">
+                <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

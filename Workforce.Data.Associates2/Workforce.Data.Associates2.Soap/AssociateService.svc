@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Workforce.Data.Associates2.Soap.AssociateService" CodeBehind="AssociateService.svc.cs" %>
