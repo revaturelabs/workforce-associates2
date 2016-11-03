@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link href="~/Content/carousel.css" rel="stylesheet" />
+  <link href="~/Content/style.css" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="icon" />
+  <link href="~/Content/responsive.css" rel="stylesheet" />
+  <link href="~/CSS/custom.css" rel="stylesheet" />
+  <link href="~/Content/myContent.css" rel="stylesheet" />
+  <link rel="icon" href="https://revature.com/imgs/favicon.ico" />
+
+  <title>@ViewBag.Title | Revature</title>
+
+  <link href="https://revature.com/imgs/favicon_192.png" rel="icon" type="image/x-icon">
+  <script src="https://use.typekit.net/pvo4jdm.js"></script>
+  <script>try { Typekit.load({ async: true }); } catch (e) { }</script>
+  <style type="text/css">
+    .wf-loading {
+      visibility: hidden;
+    }
+  </style>
+</head>
+
+
+<body class="container">
+  <div class="navbar-wrapper hero-bm">
+    <nav class="navbar navbar-revature navbar-static-top navbar-bg">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="logo">
+          <a href="/workforce-felice/Home">
+            <img src="https://revature.com/imgs/logo.png" alt="Revature" />
+          </a>
+        </div>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse rev-menu">
+        <ul class="nav navbar-nav">
+
+          <li><a href="/workforce-felice/Associate/Index/"><span class="glyphicon glyphicon-user"></span>&nbsp; ASSOCIATES</a></li>
+          <li><a href="/workforce-grace/"><span class="glyphicon glyphicon-home"></span>&nbsp; HOUSING</a></li>
+          <li><a href="/workforce-charlie/"><span class="glyphicon glyphicon-road"></span>&nbsp; RIDE SHARING</a></li>
+          <li><a href="@Url.Action("Logout", "Logout")"><span class="glyphicon glyphicon-off"></span>&nbsp; LOGOUT</a></li>
+
+        </ul>
+      </div>
+    </nav>
+
+  </div>
+
+  @RenderBody()
+
+  <div class="row">
+    <hr />
+    <footer>
+      <p id="footer">&copy; @DateTime.Now.Year Revature - Project Worforce Team. &nbsp; All rights reserved.</p>
+    </footer>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/scrollreveal.js/3.3.1/scrollreveal.min.js"></script>
+  <script src="~/Libraries/angular.min.js"></script>
+  <script src="~/Libraries/angular-route.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.4/ui-bootstrap-tpls.min.js"></script>
+  <script src="~/Scripts/app.js"></script>
+  <script src="~/modules/associates/module.js"></script>
+  <script src="~/modules/associates/service.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("body").css("display", "none");
+      $("body").fadeIn(1000);
+    });
+  </script>
+
+</body>
+</html>

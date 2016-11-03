@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="jumbotron">
+      <h1>LATEST NEWS</h1>
+      <div class="row">
+        <div class="col-md-3">
+          <a id="left-chevron" href="#" onclick="previous()"><span class="glyphicon glyphicon-menu-left menu-left-and-right"></span></a>
+        </div>
+        <div id="" class="well col-xs-6" style="background-color: white;">
+          <p id="text" class="center">
+            The .NET batch has finished creating a new pizza parlor application.  Some features of the pizzas include Revature sized pizza, with reveroni, and revona sauce.
+          </p>
+        </div>
+        <div class="col-md-3 align-right">
+          <a id="right-chevron" href="#" onclick="after()"><span class="glyphicon glyphicon-menu-right menu-left-and-right"></span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-xs-4">
+
+
+  </div>
+</div>
+
+
+
+<script>
+  function previous() {
+    $("#text").fadeIn(3000);
+    $("#text").text("The Java batches have accomplished writing the program to send spaceships outside of the Milky Way galaxy! This is like totally radical dude!");
+  }
+  function after() {
+    $("#text").fadeIn(3000);
+    $("#text").text("The .NET batch has finished creating a new pizza parlor application.  Some features of the pizzas include Revature sized pizza, with reveroni, and revona sauce.");
+  }
+</script>
