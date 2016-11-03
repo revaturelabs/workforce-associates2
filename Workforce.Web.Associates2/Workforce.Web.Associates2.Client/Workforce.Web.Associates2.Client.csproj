@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\custom.css" />
+    <Content Include="CSS\myContent.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -133,7 +134,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50101</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50101/</IISUrl>
+          <IISUrl>http://localhost/Workforce</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
