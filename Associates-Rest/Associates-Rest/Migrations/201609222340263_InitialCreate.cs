@@ -5,7 +5,7 @@ namespace Associates_Rest.Migrations
     
     public partial class InitialCreate : DbMigration
     {
-        public override void Up()
+        public override void Up()//
         {
             CreateTable(
                 "dbo.AspNetRoles",
