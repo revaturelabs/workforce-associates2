@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Associates2", "Workforce.Logic.Associates2\Workforce.Logic.Associates2.csproj", "{965F2AC4-1EE3-4F9D-A584-C937D5D327CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Associates2.Rest", "Workforce.Logic.Associates2\Workforce.Logic.Associates2.Rest.csproj", "{965F2AC4-1EE3-4F9D-A584-C937D5D327CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
