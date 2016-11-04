@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\custom.css" />
+    <Content Include="CSS\dashboard.css" />
     <Content Include="CSS\myContent.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
