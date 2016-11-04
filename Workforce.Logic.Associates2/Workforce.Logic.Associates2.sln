@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Associates2.Rest", "Workforce.Logic.Associates2\Workforce.Logic.Associates2.Rest.csproj", "{965F2AC4-1EE3-4F9D-A584-C937D5D327CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Associates2.Domain", "Workforce.Logic.Associates2.Domain\Workforce.Logic.Associates2.Domain.csproj", "{EBE55D36-FDD9-4131-825F-5BA410CBC1F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{965F2AC4-1EE3-4F9D-A584-C937D5D327CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{965F2AC4-1EE3-4F9D-A584-C937D5D327CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{965F2AC4-1EE3-4F9D-A584-C937D5D327CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBE55D36-FDD9-4131-825F-5BA410CBC1F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBE55D36-FDD9-4131-825F-5BA410CBC1F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBE55D36-FDD9-4131-825F-5BA410CBC1F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBE55D36-FDD9-4131-825F-5BA410CBC1F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
