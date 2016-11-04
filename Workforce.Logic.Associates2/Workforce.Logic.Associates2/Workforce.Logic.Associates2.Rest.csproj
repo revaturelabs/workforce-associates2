@@ -127,6 +127,9 @@
     <Compile Include="Infrastructure\RoleManager.cs" />
     <Compile Include="Migrations\201609222340263_InitialCreate.cs" />
     <Compile Include="Migrations\201609222340263_InitialCreate.Designer.cs" />
+    <Compile Include="Models\AccountBindingModel.cs" />
+    <Compile Include="Models\ModelFactory.cs" />
+    <Compile Include="Models\RoleBindingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -141,7 +144,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201609222340263_InitialCreate.resx" />
