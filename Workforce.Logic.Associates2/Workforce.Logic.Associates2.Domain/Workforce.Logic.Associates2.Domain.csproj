@@ -76,7 +76,7 @@
     <Compile Include="LogicModels\Gender.cs" />
     <Compile Include="LogicModels\Instructor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\WorkforceServiceReference\Reference.cs">
+    <Compile Include="Service References\WFSReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -85,32 +85,32 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Service References\WorkforceServiceReference\AssociateService.wsdl" />
-    <None Include="Service References\WorkforceServiceReference\AssociateService.xsd">
+    <None Include="Service References\WFSReference\AssociateService.wsdl" />
+    <None Include="Service References\WFSReference\AssociateService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WorkforceServiceReference\AssociateService1.xsd">
+    <None Include="Service References\WFSReference\AssociateService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WorkforceServiceReference\AssociateService2.xsd">
+    <None Include="Service References\WFSReference\AssociateService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.AddressDao.datasource">
+    <None Include="Service References\WFSReference\Workforce.Logic.Associates2.Domain.WFSReference.AddressDao.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.AssociateAddressDao.datasource">
+    <None Include="Service References\WFSReference\Workforce.Logic.Associates2.Domain.WFSReference.AssociateAddressDao.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.AssociateDao.datasource">
+    <None Include="Service References\WFSReference\Workforce.Logic.Associates2.Domain.WFSReference.AssociateDao.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.BatchDao.datasource">
+    <None Include="Service References\WFSReference\Workforce.Logic.Associates2.Domain.WFSReference.BatchDao.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.GenderDao.datasource">
+    <None Include="Service References\WFSReference\Workforce.Logic.Associates2.Domain.WFSReference.GenderDao.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.InstructorDao.datasource">
+    <None Include="Service References\WFSReference\Workforce.Logic.Associates2.Domain.WFSReference.InstructorDao.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Web.config" />
@@ -120,19 +120,19 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\WorkforceServiceReference\" />
+    <WCFMetadataStorage Include="Service References\WFSReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WorkforceServiceReference\AssociateService.disco" />
+    <None Include="Service References\WFSReference\AssociateService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WorkforceServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\WFSReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WorkforceServiceReference\configuration.svcinfo" />
+    <None Include="Service References\WFSReference\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WorkforceServiceReference\Reference.svcmap">
+    <None Include="Service References\WFSReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
