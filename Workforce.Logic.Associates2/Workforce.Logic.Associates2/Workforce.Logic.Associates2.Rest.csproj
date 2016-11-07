@@ -14,11 +14,12 @@
     <RootNamespace>Workforce.Logic.Associates2</RootNamespace>
     <AssemblyName>Workforce.Logic.Associates2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -146,10 +147,28 @@
     <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.BatchDao.datasource" />
     <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.GenderDao.datasource" />
     <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.InstructorDao.datasource" />
-    <None Include="Service References\WorkforceServiceReference\AssociateService.disco" />
-    <None Include="Service References\WorkforceServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\WorkforceServiceReference\configuration.svcinfo" />
-    <None Include="Service References\WorkforceServiceReference\Reference.svcmap">
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.AddressDao1.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.AssociateAddressDao1.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.AssociateDao1.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.BatchDao1.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.GenderDao1.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WorkforceServiceReference.InstructorDao1.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WFSReference.AddressDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WFSReference.AssociateAddressDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WFSReference.AssociateDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WFSReference.BatchDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WFSReference.GenderDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.WFSReference.InstructorDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.AssociateService.AddressDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.AssociateService.AssociateAddressDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.AssociateService.AssociateDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.AssociateService.BatchDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.AssociateService.GenderDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Associates2.Domain.AssociateService.InstructorDao.datasource" />
+    <None Include="Service References\AssociateService\AssociateService.disco" />
+    <None Include="Service References\AssociateService\configuration91.svcinfo" />
+    <None Include="Service References\AssociateService\configuration.svcinfo" />
+    <None Include="Service References\AssociateService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -182,7 +201,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CustomJwtFormat.cs" />
     <Compile Include="Providers\CustomOAuthProvider.cs" />
-    <Compile Include="Service References\WorkforceServiceReference\Reference.cs">
+    <Compile Include="Service References\AssociateService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -191,14 +210,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Service References\WorkforceServiceReference\AssociateService.wsdl" />
-    <None Include="Service References\WorkforceServiceReference\AssociateService.xsd">
+    <None Include="Service References\AssociateService\AssociateService.wsdl" />
+    <None Include="Service References\AssociateService\AssociateService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WorkforceServiceReference\AssociateService1.xsd">
+    <None Include="Service References\AssociateService\AssociateService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WorkforceServiceReference\AssociateService2.xsd">
+    <None Include="Service References\AssociateService\AssociateService2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.Debug.config">
@@ -224,7 +243,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\WorkforceServiceReference\" />
+    <WCFMetadataStorage Include="Service References\AssociateService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -241,7 +260,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52504</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52504/</IISUrl>
+          <IISUrl>http://localhost/workforce-associate-rest</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
