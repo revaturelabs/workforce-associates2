@@ -5,8 +5,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Workforce.Logic.Associates2.Domain.AssociateService;
 using Workforce.Logic.Associates2.Domain.DomainModels;
-using Workforce.Logic.Associates2.Domain.WFSReference;
+
 
 namespace Workforce.Logic.Associates2.Domain
 {
