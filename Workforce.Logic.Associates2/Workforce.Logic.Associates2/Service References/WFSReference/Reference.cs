@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Workforce.Logic.Associates2.WFSRReference {
+namespace Workforce.Logic.Associates2.WFSReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WFSRReference.IAssociateService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WFSReference.IAssociateService")]
     public interface IAssociateService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAssociateService/GetAssociates", ReplyAction="http://tempuri.org/IAssociateService/GetAssociatesResponse")]
@@ -161,12 +161,12 @@ namespace Workforce.Logic.Associates2.WFSRReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IAssociateServiceChannel : Workforce.Logic.Associates2.WFSRReference.IAssociateService, System.ServiceModel.IClientChannel {
+    public interface IAssociateServiceChannel : Workforce.Logic.Associates2.WFSReference.IAssociateService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class AssociateServiceClient : System.ServiceModel.ClientBase<Workforce.Logic.Associates2.WFSRReference.IAssociateService>, Workforce.Logic.Associates2.WFSRReference.IAssociateService {
+    public partial class AssociateServiceClient : System.ServiceModel.ClientBase<Workforce.Logic.Associates2.WFSReference.IAssociateService>, Workforce.Logic.Associates2.WFSReference.IAssociateService {
         
         public AssociateServiceClient() {
         }
