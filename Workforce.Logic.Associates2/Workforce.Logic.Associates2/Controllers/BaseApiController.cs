@@ -6,11 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Workforce.Logic.Associates2.Infrastructure;
 using Workforce.Logic.Associates2.Rest.Models;
 
 namespace Workforce.Logic.Associates2.Rest.Controllers
 {
+  [EnableCors(origins: "*", headers: "*", methods: "*")]
   public class BaseApiController : ApiController
   {
     private ModelFactory modelFactory;

@@ -5,12 +5,14 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Workforce.Logic.Associates2.Domain;
 using Workforce.Logic.Associates2.Domain.DomainModels;
 
 namespace Workforce.Logic.Associates2.Rest.Controllers
 {
-   public class AssociateController : ApiController
+  [EnableCors(origins: "*", headers: "*", methods: "*")]
+  public class AssociateController : ApiController
    {
       private readonly LogicHelper logic = new LogicHelper();
 
