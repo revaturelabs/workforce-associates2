@@ -41,7 +41,7 @@ namespace Workforce.Logic.Associates2.Domain.Services
 
       //formatting the email to be sent
       email.To.Add(message.Destination);
-      email.From = new System.Net.Mail.MailAddress("revature@projectliberate.com", "Revature");
+      email.From = new System.Net.Mail.MailAddress("no-reply@revature.com", "Revature"); //origianally ("revature@projectliberate.com", "Revature")
       email.Subject = message.Subject;
       email.Body = message.Body;
       email.IsBodyHtml = true;
