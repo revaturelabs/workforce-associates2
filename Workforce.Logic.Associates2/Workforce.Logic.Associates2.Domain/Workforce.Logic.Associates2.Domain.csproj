@@ -69,6 +69,7 @@
     <Compile Include="DomainModels\BatchDto.cs" />
     <Compile Include="DomainModels\GenderDto.cs" />
     <Compile Include="DomainModels\InstructorDto.cs" />
+    <Compile Include="HousingRestConnector.cs" />
     <Compile Include="LogicHelper.cs" />
     <Compile Include="LogicModels\Address.cs" />
     <Compile Include="LogicModels\Associate.cs" />
