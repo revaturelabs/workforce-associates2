@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Workforce.Logic.Associates2.Rest.Models;
 
 namespace Workforce.Logic.Associates2.Rest.Controllers
@@ -17,6 +18,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
   /// </summary>
   [Authorize(Roles="Admin")]
   [RoutePrefix("api/roles")]
+  [EnableCors(origins: "*", headers: "*", methods: "*")]
   public class RolesController : BaseApiController
   {
     /// <summary>

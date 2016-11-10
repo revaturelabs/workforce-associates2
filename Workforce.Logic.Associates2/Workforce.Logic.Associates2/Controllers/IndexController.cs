@@ -5,10 +5,12 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Reflection;
+using System.Web.Http.Cors;
 
 namespace Workforce.Logic.Associates2.Rest.Controllers
 {
-   public class IndexController : ApiController
+  [EnableCors(origins: "*", headers: "*", methods: "*")]
+  public class IndexController : ApiController
    {
       /// <summary>
       /// This is the base 'Get' method for Index
