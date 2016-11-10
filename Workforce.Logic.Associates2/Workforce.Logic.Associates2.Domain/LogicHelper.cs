@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using Workforce.Logic.Associates2.Domain.DomainModels;
 using Workforce.Logic.Associates2.Domain.WFSReference;
 
@@ -107,7 +108,9 @@ namespace Workforce.Logic.Associates2.Domain
 
         delAssociate.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(delAssociate.Gender)).GenderID.ToString();
 
-        HRConnector.GetPOSTResponse(new Uri("/workforce-associate-rest/api/associate"), delAssociate.AssociateID.ToString(), null);
+        var thestring = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Host + "/workforce-housing-rest/api/housingdata";
+        var theUri = new Uri(thestring);
+        var resultMessage = HRConnector.GetDeleteResponse(theUri, delAssociate.AssociateID.ToString());
         return await client.DeleteAssociateAsync(associateLogic.MapToSoap(delAssociate));
       }
       else
