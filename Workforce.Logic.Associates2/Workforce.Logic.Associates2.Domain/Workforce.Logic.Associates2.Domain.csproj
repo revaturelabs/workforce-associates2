@@ -80,6 +80,7 @@
     <Compile Include="LogicHelper.cs" />
     <Compile Include="LogicModels\Address.cs" />
     <Compile Include="LogicModels\Associate.cs" />
+    <Compile Include="LogicModels\AutoGenPassword.cs" />
     <Compile Include="LogicModels\Batch.cs" />
     <Compile Include="LogicModels\Gender.cs" />
     <Compile Include="LogicModels\Instructor.cs" />

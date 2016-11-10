@@ -9,6 +9,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using Workforce.Logic.Associates2.Domain;
 using Workforce.Logic.Associates2.Domain.DomainModels;
+using Workforce.Logic.Associates2.Domain.LogicModels;
 using Workforce.Logic.Associates2.Infrastructure;
 using Workforce.Logic.Associates2.Rest.Models;
 
@@ -115,7 +116,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
 
       //This will do the work for us to create the user
       //It will validate if the username or email has been used before
-      //and will let us know if the password matches the policy we have set forth
+      //and will let us know if the matches the policy we have set forth
       //If the request is valid, the user will be added to our table in
       //the database and return a successful result
       IdentityResult addUserResult = await this.AppUserManager.CreateAsync(user, createUserModel.Password);
@@ -132,7 +133,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
 
       var callbackUrl = new Uri(Url.Link("ConfirmEmailRoute", new { userId = user.Id, code = code }));
 
-      await this.AppUserManager.SendEmailAsync(user.Id, "Confirm Your Account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a> <br/> Your password is: " + createUserModel.Password);
+      await this.AppUserManager.SendEmailAsync(user.Id, "Confirm Your Account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a> <br/> Your password is: " + (createUserModel.Password = AutoGenPassword.Generate(8, 10)));
 
       Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
 
