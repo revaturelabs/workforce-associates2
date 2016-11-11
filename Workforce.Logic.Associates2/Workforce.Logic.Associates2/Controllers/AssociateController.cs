@@ -22,7 +22,8 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> FindAll()
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllAssociates());
+         string status = "true";
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAssociatesByStatus(status));
       }
 
       /// <summary>
@@ -31,7 +32,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> FindByStatus(string status)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAssociatesByStatus(status));
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllAssociates());
       }
 
       /// <summary>
