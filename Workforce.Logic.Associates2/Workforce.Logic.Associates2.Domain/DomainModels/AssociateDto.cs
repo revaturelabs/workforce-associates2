@@ -10,11 +10,11 @@ namespace Workforce.Logic.Associates2.Domain.DomainModels
    public class AssociateDto
    {
       public int? AssociateID { get; set; }
-      [StringLength(50), Required, RegularExpression("/^[A-Za-Z]+$/")]
+      [StringLength(50), Required, DataType(DataType.Text) ]
       public string FirstName { get; set; }
-      [StringLength(50), Required, RegularExpression("/^[A-Za-Z]+$/")]
+      [StringLength(50), Required, DataType(DataType.Text)]
       public string LastName { get; set; }
-      [RegularExpression("/^[A-Za-Z0-9]+$/")]
+      [DataType(DataType.Text)]
       public string Gender { get; set; }  //set to string to hold Gender.Name
       [Required]
       public int BatchID { get; set; }
