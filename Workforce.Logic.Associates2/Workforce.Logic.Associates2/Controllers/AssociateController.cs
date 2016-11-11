@@ -11,7 +11,6 @@ using Workforce.Logic.Associates2.Domain.DomainModels;
 
 namespace Workforce.Logic.Associates2.Rest.Controllers
 {
-  [EnableCors(origins: "*", headers: "*", methods: "*")]
   public class AssociateController : ApiController
   {
     private readonly LogicHelper logic = new LogicHelper();
