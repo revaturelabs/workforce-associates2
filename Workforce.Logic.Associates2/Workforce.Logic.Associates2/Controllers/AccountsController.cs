@@ -108,7 +108,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
         LastName = createUserModel.LastName,
         Email = createUserModel.Email,
         Gender = createUserModel.Gender,
-        BatchID = createUserModel.Batch
+        //Batch = createUserModel.Batch
       };
 
       LogicHelper help = new LogicHelper();

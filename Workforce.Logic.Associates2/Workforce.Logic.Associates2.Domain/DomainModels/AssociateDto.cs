@@ -17,7 +17,7 @@ namespace Workforce.Logic.Associates2.Domain.DomainModels
       [DataType(DataType.Text)]
       public string Gender { get; set; }  //set to string to hold Gender.Name
       [Required]
-      public int BatchID { get; set; }
+      public string Batch { get; set; }
       public string PhoneNumber { get; set; }
       [StringLength(500), Required]
       public string Email { get; set; }
