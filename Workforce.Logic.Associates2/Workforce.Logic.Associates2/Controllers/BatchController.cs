@@ -22,7 +22,10 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> FindAll()
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllBatches());
+         string status = "true"; // This line will be obsolete once the below issues have been corrected in a future update
+         // The following line of code belongs to the FindByStatus API Call, but has been set here to temporarily resolve
+         // an immediate issue that will be correctly resolved in a future update
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetBatchesByStatus(status));
       }
 
       /// <summary>
@@ -31,7 +34,10 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> FindByStatus(string status)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetBatchesByStatus(status));
+         // The line below originally belongs to the FindAll() API call. 
+         // It is planned to be resolved in a future update as this (FindByStatus) API call
+         // is not functioning for some unknown reason
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllBatches());
       }
 
       /// <summary>
