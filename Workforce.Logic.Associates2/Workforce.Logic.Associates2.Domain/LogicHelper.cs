@@ -28,6 +28,7 @@ namespace Workforce.Logic.Associates2.Domain
       var associate = new List<AssociateDto>();
       var serviceAssociates = await client.GetAssociatesAsync();
       var serviceGenders = await client.GetGenderAsync();
+      var serviceBatches = await client.GetBatchesAsync();
 
       foreach (var item in serviceAssociates)
       {
@@ -35,6 +36,7 @@ namespace Workforce.Logic.Associates2.Domain
         {
           var parse = associateLogic.MapToRest(item);
           parse.Gender = serviceGenders.FirstOrDefault(g => g.GenderID.Equals(item.GenderID)).Name;
+          parse.Batch = serviceBatches.FirstOrDefault(b => b.BatchID.Equals(item.BatchID)).Name;
 
           associate.Add(parse);
         }
@@ -50,6 +52,7 @@ namespace Workforce.Logic.Associates2.Domain
       var associate = new List<AssociateDto>();
       var serviceAssociates = await client.GetAssociatesAsync();
       var serviceGenders = await client.GetGenderAsync();
+      var serviceBatches = await client.GetBatchesAsync();
 
       foreach (var item in serviceAssociates)
       {
@@ -59,6 +62,7 @@ namespace Workforce.Logic.Associates2.Domain
           {
             var parse = associateLogic.MapToRest(item);
             parse.Gender = serviceGenders.FirstOrDefault(g => g.GenderID.Equals(item.GenderID)).Name;
+            parse.Batch = serviceBatches.FirstOrDefault(b => b.BatchID.Equals(item.BatchID)).Name;
 
             associate.Add(parse);
           }
@@ -85,8 +89,10 @@ namespace Workforce.Logic.Associates2.Domain
       if (associateLogic.ValidateRestData(newAssociate))
       {
         var serviceGenders = await client.GetGenderAsync();
+        var serviceBatch = await client.GetBatchesAsync();
 
         newAssociate.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(newAssociate.Gender)).GenderID.ToString();
+        newAssociate.Batch = serviceBatch.FirstOrDefault(b => b.Name.Equals(newAssociate.Batch)).BatchID.ToString();
 
         return await client.InsertAssociateAsync(associateLogic.MapToSoap(newAssociate));
       }
