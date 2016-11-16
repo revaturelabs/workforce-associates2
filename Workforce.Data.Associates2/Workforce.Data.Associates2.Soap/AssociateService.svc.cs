@@ -120,8 +120,8 @@ namespace Workforce.Data.Associates2.Soap
       {
         if (addressVal.Validate(newaddress))
         {
-          ac.InsertAddress(emap.MapToData(newaddress));
-          return true;
+          
+          return ac.InsertAddress(emap.MapToData(newaddress)); ;
         }
         return false;
       }
@@ -138,8 +138,8 @@ namespace Workforce.Data.Associates2.Soap
       {
         if (associateVal.Validate(newassociate))
         {
-          ac.InsertAssociate(emap.MapToData(newassociate));
-          return true;
+          
+          return ac.InsertAssociate(emap.MapToData(newassociate)); ;
         }
         return false;
       }
@@ -156,8 +156,8 @@ namespace Workforce.Data.Associates2.Soap
       {
         if (associateAddressVal.Validate(newassocaddress))
         {
-          ac.InsertAssociateAddress(emap.MapToData(newassocaddress));
-          return true;
+          
+          return ac.InsertAssociateAddress(emap.MapToData(newassocaddress)); ;
         }
         return false;
       }
@@ -174,8 +174,8 @@ namespace Workforce.Data.Associates2.Soap
       {
         if (batchVal.Validate(newbatch))
         {
-          ac.InsertBatch(emap.MapToData(newbatch));
-          return true;
+
+          return ac.InsertBatch(emap.MapToData(newbatch)); ;
         }
         return false;
       }
@@ -191,8 +191,8 @@ namespace Workforce.Data.Associates2.Soap
       {
         if (genderVal.Validate(newgender))
         {
-          ac.InsertGender(emap.MapToData(newgender));
-          return true;
+          
+          return ac.InsertGender(emap.MapToData(newgender)); ;
         }
         return false;
       }
@@ -209,8 +209,8 @@ namespace Workforce.Data.Associates2.Soap
       {
         if (instructorVal.Validate(newinstructor))
         {
-          ac.InsertInstructor(emap.MapToData(newinstructor));
-          return true;
+
+          return ac.InsertInstructor(emap.MapToData(newinstructor)); ;
         }
         return false;
       }
