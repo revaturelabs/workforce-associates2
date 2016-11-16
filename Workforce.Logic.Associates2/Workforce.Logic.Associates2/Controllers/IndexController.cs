@@ -38,6 +38,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
          options.Add("GetAllActiveAddresses", "api/address/findbystatus/true");
          options.Add("GetAllDeactiveAddresses", "api/address/findbystatus/false");
          // all account menu items
+         options.Add("Login (Requires 'Anonymous')", "/oauth/token");
          options.Add("GetAllUsers (Requires 'Admin')", "api/accounts/user");
          options.Add("GetUserById (Requires 'Admin')", "api/accounts/user/{id:guid}");
          options.Add("GetUserByUsername (Requires 'Admin')", "api/accounts/user/{username}");
