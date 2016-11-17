@@ -21,7 +21,10 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> FindAll()
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllAssociates());
+        Logger log = new Logger();
+        log.InfoLog();
+        log.ErrorLog("An error has occurred");
+        return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllAssociates());
       }
 
       /// <summary>

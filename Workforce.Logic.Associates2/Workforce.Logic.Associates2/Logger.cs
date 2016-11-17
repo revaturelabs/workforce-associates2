@@ -12,9 +12,9 @@ namespace Workforce.Logic.Associates2
     //reflection can be slow
     private static readonly log4net.ILog log = LogHelper.GetLogger(); //log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-    public void ErrorLog()
+    public void ErrorLog(string message)
     {
-      log.Error("This is an error message");
+      log.Error(message);
     }
 
     public void InfoLog()
