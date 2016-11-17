@@ -186,6 +186,7 @@
     <Compile Include="Infrastructure\ApplicationUserManager.cs" />
     <Compile Include="Infrastructure\Configuration.cs" />
     <Compile Include="Infrastructure\RoleManager.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Migrations\201609222340263_InitialCreate.cs" />
     <Compile Include="Migrations\201609222340263_InitialCreate.Designer.cs" />
     <Compile Include="Models\AccountBindingModel.cs" />
