@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Web;
 
+
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace Workforce.Logic.Associates2
 {
   public class LogHelper
