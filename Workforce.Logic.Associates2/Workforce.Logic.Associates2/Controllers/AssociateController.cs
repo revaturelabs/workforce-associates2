@@ -30,16 +30,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
 
         catch(Exception ex)
         {
-          if(ex.InnerException != null)
-          {
-            logger.Error("The error for getting associates was: " + ex.ToString());
-          }
-
-          else
-          {
-            logger.Error("The error for getting associates was: " + ex.InnerException.ToString());
-          }
-
+          LogHelper.ErrorLogger(logger, ex);
           return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
       }
@@ -59,15 +50,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
 
         catch(Exception ex)
         {
-          if (ex.InnerException != null)
-          {
-            logger.Error("The error for finding associate by status was: " + ex.ToString());
-          }
-
-          else
-          {
-            logger.Error("The error for finding associate by status was: " + ex.InnerException.ToString());
-          }
+          LogHelper.ErrorLogger(logger, ex);          
           return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
       }
@@ -87,15 +70,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
         
         catch(Exception ex)
         {
-          if (ex.InnerException != null)
-          {
-            logger.Error("The error for adding new associate was: " + ex.ToString());
-          }
-
-          else
-          {
-            logger.Error("The error for adding new associate was: " + ex.InnerException.ToString());
-          }
+          LogHelper.ErrorLogger(logger, ex);
           return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
       }
@@ -114,15 +89,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
         }
         catch (Exception ex)
         {
-          if (ex.InnerException != null)
-          {
-            logger.Error("The error for deleting associate was: " + ex.ToString());
-          }
-
-          else
-          {
-            logger.Error("The error for deleting associate was: " + ex.InnerException.ToString());
-          }
+          LogHelper.ErrorLogger(logger, ex);
           return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
@@ -142,15 +109,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
         }
         catch (Exception ex)
         {
-          if (ex.InnerException != null)
-          {
-            logger.Error("The error for updating associate was: " + ex.ToString());
-          }
-
-          else
-          {
-            logger.Error("The error for updating associate was: " + ex.InnerException.ToString());
-          }
+          LogHelper.ErrorLogger(logger, ex);
           return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
          
