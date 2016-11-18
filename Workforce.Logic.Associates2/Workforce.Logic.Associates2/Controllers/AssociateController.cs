@@ -14,14 +14,25 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
   public class AssociateController : ApiController
    {
       private readonly LogicHelper logic = new LogicHelper();
-
+      private static readonly log4net.ILog logger = LogHelper.GetLogger();
       /// <summary>
       /// This 'Get' method will get every Associate that exists in the database
       /// </summary>
       [HttpGet]
       public async Task<HttpResponseMessage> FindAll()
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllAssociates());
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllAssociates());
+          logger.Info("Get all associates successful");
+          return response;
+        }
+
+        catch(Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -30,7 +41,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> FindByStatus(string status)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAssociatesByStatus(status));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.GetAssociatesByStatus(status));
+          logger.Info("Find associate by status successful");
+          return response;
+        }
+
+        catch(Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);          
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -39,7 +61,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpPost]
       public async Task<HttpResponseMessage> Post([FromBody]AssociateDto associate)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewAssociate(associate));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewAssociate(associate));
+          logger.Info("Add New Associate Successful");
+          return response;
+        }
+        
+        catch(Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -48,7 +81,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpDelete]
       public async Task<HttpResponseMessage> Delete([FromBody]AssociateDto associate)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateAssociate(associate));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateAssociate(associate));
+          logger.Info("Delete Associate Successful");
+          return response;
+        }
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
       }
 
       /// <summary>
@@ -57,7 +101,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpPut]
       public async Task<HttpResponseMessage> Put([FromBody]AssociateDto associate)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateAssociate(associate));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateAssociate(associate));
+          logger.Info("Update Associate Successful");
+          return response;
+        }
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+         
       }
    }
 }
