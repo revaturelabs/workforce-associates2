@@ -50,7 +50,26 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> FindByStatus(string status)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAssociatesByStatus(status));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.GetAssociatesByStatus(status));
+          logger.Info("Find associate by status successful");
+          return response;
+        }
+
+        catch(Exception ex)
+        {
+          if (ex.InnerException != null)
+          {
+            logger.Error("The error for findind associate by status was: " + ex.ToString());
+          }
+
+          else
+          {
+            logger.Error("The error for findind associate by status was: " + ex.InnerException.ToString());
+          }
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
