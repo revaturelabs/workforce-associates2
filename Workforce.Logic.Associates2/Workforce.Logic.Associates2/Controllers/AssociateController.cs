@@ -61,12 +61,12 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
         {
           if (ex.InnerException != null)
           {
-            logger.Error("The error for findind associate by status was: " + ex.ToString());
+            logger.Error("The error for finding associate by status was: " + ex.ToString());
           }
 
           else
           {
-            logger.Error("The error for findind associate by status was: " + ex.InnerException.ToString());
+            logger.Error("The error for finding associate by status was: " + ex.InnerException.ToString());
           }
           return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
@@ -78,7 +78,26 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpPost]
       public async Task<HttpResponseMessage> Post([FromBody]AssociateDto associate)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewAssociate(associate));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewAssociate(associate));
+          logger.Info("Add New Associate Successful");
+          return response;
+        }
+        
+        catch(Exception ex)
+        {
+          if (ex.InnerException != null)
+          {
+            logger.Error("The error for adding new associate was: " + ex.ToString());
+          }
+
+          else
+          {
+            logger.Error("The error for adding new associate was: " + ex.InnerException.ToString());
+          }
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -87,7 +106,26 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpDelete]
       public async Task<HttpResponseMessage> Delete([FromBody]AssociateDto associate)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateAssociate(associate));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateAssociate(associate));
+          logger.Info("Delete Associate Successful");
+          return response;
+        }
+        catch (Exception ex)
+        {
+          if (ex.InnerException != null)
+          {
+            logger.Error("The error for deleting associate was: " + ex.ToString());
+          }
+
+          else
+          {
+            logger.Error("The error for deleting associate was: " + ex.InnerException.ToString());
+          }
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
       }
 
       /// <summary>
@@ -96,7 +134,26 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpPut]
       public async Task<HttpResponseMessage> Put([FromBody]AssociateDto associate)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateAssociate(associate));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateAssociate(associate));
+          logger.Info("Update Associate Successful");
+          return response;
+        }
+        catch (Exception ex)
+        {
+          if (ex.InnerException != null)
+          {
+            logger.Error("The error for updating associate was: " + ex.ToString());
+          }
+
+          else
+          {
+            logger.Error("The error for updating associate was: " + ex.InnerException.ToString());
+          }
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+         
       }
    }
 }
