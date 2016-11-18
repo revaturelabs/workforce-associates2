@@ -13,7 +13,8 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
 {
   public class AssociateController : ApiController
    {
-      private readonly LogicHelper logic = new LogicHelper();
+    private readonly LogicHelper logic = new LogicHelper();
+    private static readonly log4net.ILog logger = LogHelper.GetLogger();
 
       /// <summary>
       /// This 'Get' method will get every Associate that exists in the database
@@ -21,10 +22,26 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> FindAll()
       {
-        Logger log = new Logger();
-        log.InfoLog();
-        log.ErrorLog("An error has occurred");
-        return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllAssociates());
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllAssociates());
+          logger.Info("Get All Associates Successful");
+          return response;
+        }
+        catch(Exception ex)
+        {
+          if (ex.InnerException != null)
+          {
+            logger.Error("The error getting all associates was this: " + ex.InnerException.ToString());
+          }
+
+          else
+          {
+            logger.Error("The error getting all associates was this: " + ex.ToString());
+          }
+
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
