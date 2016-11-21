@@ -40,7 +40,6 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
            return Request.CreateResponse(HttpStatusCode.BadRequest);
          }
 
-         //return Request.CreateResponse(HttpStatusCode.OK, await logic.GetBatchesByStatus(status));
       }
 
       /// <summary>
@@ -52,7 +51,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
          // The line below originally belongs to the FindAll() API call. 
          // It is planned to be resolved in a future update as this (FindByStatus) API call
          // is not functioning for some unknown reason
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetBatchesByStatus(status));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.GetBatchesByStatus(status));
+          logger.Info("Get all batches by status successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
