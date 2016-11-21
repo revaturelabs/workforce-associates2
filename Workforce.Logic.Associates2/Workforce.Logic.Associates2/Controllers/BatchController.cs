@@ -15,6 +15,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
   public class BatchController : ApiController
     {
       private readonly LogicHelper logic = new LogicHelper();
+      private static readonly log4net.ILog logger = LogHelper.GetLogger();
 
       /// <summary>
       /// This 'Get' method will get every Associate that exists in the database
@@ -25,7 +26,19 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
          string status = "true"; // This line will be obsolete once the below issues have been corrected in a future update
          // The following line of code belongs to the FindByStatus API Call, but has been set here to temporarily resolve
          // an immediate issue that will be correctly resolved in a future update
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllBatches());
+
+         try
+         {
+           var response = Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllBatches());
+           logger.Info("Get all batches successful");
+           return response;
+         }
+
+         catch (Exception ex)
+         {
+           LogHelper.ErrorLogger(logger, ex);
+           return Request.CreateResponse(HttpStatusCode.BadRequest);
+         }
 
          //return Request.CreateResponse(HttpStatusCode.OK, await logic.GetBatchesByStatus(status));
       }
