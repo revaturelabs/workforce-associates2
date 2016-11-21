@@ -92,7 +92,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpDelete]
       public async Task<HttpResponseMessage> Delete([FromBody]BatchDto batch)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateBatch(batch));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateBatch(batch));
+          logger.Info("Delete batch successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -101,7 +112,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpPut]
       public async Task<HttpResponseMessage> Put([FromBody]BatchDto batch)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateBatch(batch));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateBatch(batch));
+          logger.Info("Update batch successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
    }
 }
