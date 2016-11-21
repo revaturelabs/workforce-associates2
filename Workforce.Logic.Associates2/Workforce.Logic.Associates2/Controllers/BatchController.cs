@@ -15,6 +15,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
   public class BatchController : ApiController
     {
       private readonly LogicHelper logic = new LogicHelper();
+      private static readonly log4net.ILog logger = LogHelper.GetLogger();
 
       /// <summary>
       /// This 'Get' method will get every Associate that exists in the database
@@ -25,9 +26,20 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
          string status = "true"; // This line will be obsolete once the below issues have been corrected in a future update
          // The following line of code belongs to the FindByStatus API Call, but has been set here to temporarily resolve
          // an immediate issue that will be correctly resolved in a future update
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllBatches());
 
-         //return Request.CreateResponse(HttpStatusCode.OK, await logic.GetBatchesByStatus(status));
+         try
+         {
+           var response = Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllBatches());
+           logger.Info("Get all batches successful");
+           return response;
+         }
+
+         catch (Exception ex)
+         {
+           LogHelper.ErrorLogger(logger, ex);
+           return Request.CreateResponse(HttpStatusCode.BadRequest);
+         }
+
       }
 
       /// <summary>
@@ -39,7 +51,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
          // The line below originally belongs to the FindAll() API call. 
          // It is planned to be resolved in a future update as this (FindByStatus) API call
          // is not functioning for some unknown reason
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetBatchesByStatus(status));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.GetBatchesByStatus(status));
+          logger.Info("Get all batches by status successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -48,7 +71,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpPost]
       public async Task<HttpResponseMessage> Post([FromBody]BatchDto batch)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewBatch(batch));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewBatch(batch));
+          logger.Info("Add new batch successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -58,7 +92,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpDelete]
       public async Task<HttpResponseMessage> Delete([FromBody]BatchDto batch)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateBatch(batch));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateBatch(batch));
+          logger.Info("Delete batch successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -67,7 +112,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpPut]
       public async Task<HttpResponseMessage> Put([FromBody]BatchDto batch)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateBatch(batch));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateBatch(batch));
+          logger.Info("Update batch successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
    }
 }
