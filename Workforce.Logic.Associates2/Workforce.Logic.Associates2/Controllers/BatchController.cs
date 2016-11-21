@@ -71,7 +71,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpPost]
       public async Task<HttpResponseMessage> Post([FromBody]BatchDto batch)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewBatch(batch));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewBatch(batch));
+          logger.Info("Add new batch successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
