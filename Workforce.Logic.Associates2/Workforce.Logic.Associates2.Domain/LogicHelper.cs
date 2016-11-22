@@ -11,6 +11,9 @@ namespace Workforce.Logic.Associates2.Domain
 {
   public class LogicHelper
   {
+    /// <summary>
+    /// These are the primers for calling specific references
+    /// </summary>
     private readonly AssociateServiceClient client = new AssociateServiceClient();
     private readonly HousingRestConnector HRConnector = new HousingRestConnector();
     private readonly Associate associateLogic = new Associate();
