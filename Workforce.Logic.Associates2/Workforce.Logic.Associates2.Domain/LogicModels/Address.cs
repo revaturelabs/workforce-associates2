@@ -14,7 +14,7 @@ namespace Workforce.Logic.Associates2.Domain
    {
       private readonly MapperConfiguration addressMapper = new MapperConfiguration(t => t.CreateMap<AddressDao, AddressDto>());
       private readonly MapperConfiguration addressReverseMapper = new MapperConfiguration(t => t.CreateMap<AddressDto, AddressDao>());
-      private CoreValidator val = new CoreValidator();
+      private readonly CoreValidator val = new CoreValidator();
 
       /// <summary>
       /// Validates the data coming in from the data layer

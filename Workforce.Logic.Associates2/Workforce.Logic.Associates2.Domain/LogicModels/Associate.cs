@@ -17,7 +17,7 @@ namespace Workforce.Logic.Associates2.Domain
                                                                                                                                       .ForMember(b1 => b1.Batch, opt => opt.MapFrom(b2 => b2.BatchID.ToString())));
       private readonly MapperConfiguration associateReverseMapper = new MapperConfiguration(a => a.CreateMap<AssociateDto, AssociateDao>().ForMember(a2 => a2.GenderID, m => m.MapFrom(a1 => int.Parse(a1.Gender)))
                                                                                                                                              .ForMember(b2 => b2.BatchID, m => m.MapFrom(b1 => int.Parse(b1.Batch))));
-      private CoreValidator val = new CoreValidator();
+      private readonly CoreValidator val = new CoreValidator();
 
       /// <summary>
       /// Validates the data coming in from the data layer
