@@ -16,8 +16,8 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
   public class BaseApiController : ApiController
   {
     private ModelFactory modelFactory;
-    private ApplicationUserManager appUserManager = null;
-    private ApplicationRoleManager appRoleManager = null;
+    private readonly ApplicationUserManager appUserManager = null;
+    private readonly ApplicationRoleManager appRoleManager = null;
 
     /// <summary>
     /// Gets instance of ApplicationUserManager that

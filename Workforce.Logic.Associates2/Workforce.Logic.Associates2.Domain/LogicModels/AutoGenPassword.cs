@@ -24,7 +24,7 @@ namespace Workforce.Logic.Associates2.Domain.LogicModels
    /// this because some back-end systems do not like certain special
    /// characters in the first position).
    /// </summary>
-   public class AutoGenPassword
+   public static class AutoGenPassword
    {
       // Define default min and max password lengths.
       private static int DEFAULT_MIN_PASSWORD_LENGTH = 6;

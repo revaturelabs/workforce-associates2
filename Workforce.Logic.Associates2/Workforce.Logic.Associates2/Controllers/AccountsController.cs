@@ -28,7 +28,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
     [Route("user")]
     public IHttpActionResult GetUsers()
     {
-      return Ok(this.AppUserManager.Users.ToList().Select(u => this.TheModelFactory.Create(u)));
+      return Ok(this.AppUserManager.Users.Select(u => this.TheModelFactory.Create(u)).ToList());
     }
 
     /// <summary>
@@ -133,7 +133,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
 
       var callbackUrl = new Uri(Url.Link("ConfirmEmailRoute", new { userId = user.Id, code = code }));
 
-      await this.AppUserManager.SendEmailAsync(user.Id, "Confirm Your Account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a> <br/> Your password is: " + (createUserModel.Password = AutoGenPassword.Generate(8, 10)));
+      await this.AppUserManager.SendEmailAsync(user.Id, "Confirm Your Account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a> <br/> Your password is: " + AutoGenPassword.Generate(8, 10));
 
       Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
 
@@ -255,7 +255,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
 
       var currentRoles = await this.AppUserManager.GetRolesAsync(appUser.Id);
       var rolesNotExists = rolesToAssign.Except(this.AppRoleManager.Roles.Select(x => x.Name)).ToArray();
-      if (rolesNotExists.Count() > 0)
+      if (rolesNotExists.Any())
       {
         ModelState.AddModelError("", string.Format("Roles '{0}' does not exist", string.Join(",", rolesNotExists)));
       }

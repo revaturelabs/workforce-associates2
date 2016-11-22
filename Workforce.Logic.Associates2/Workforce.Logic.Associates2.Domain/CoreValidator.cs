@@ -70,11 +70,7 @@ namespace Workforce.Logic.Associates2.Domain
       {
          DateTime test;
 
-         if (newDate == null)
-         {
-            return true;
-         }
-         else if (DateTime.TryParse(newDate.ToString(), out test))
+         if (newDate == null || DateTime.TryParse(newDate.ToString(), out test))
          {
             return true;
          }

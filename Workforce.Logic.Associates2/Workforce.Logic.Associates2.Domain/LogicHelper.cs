@@ -76,7 +76,7 @@ namespace Workforce.Logic.Associates2.Domain
         }
         else //return all deactive associates
         {
-          if (associateLogic.ValidateSoapData(item) && item.Active == false)
+          if (associateLogic.ValidateSoapData(item) && !item.Active)
           {
             // The following lines parse the collected data and convert BatchID/GenderID to their associated Names
             var parse = associateLogic.MapToRest(item);
@@ -135,7 +135,7 @@ namespace Workforce.Logic.Associates2.Domain
         var thestring = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Host + "/workforce-housing-rest/api/housingdata";
         var theUri = new Uri(thestring);
         // Deletes the associated Housing data attached to the associate being deleted
-        var resultMessage = HRConnector.GetDeleteResponse(theUri, delAssociate.AssociateID.ToString());
+        await HRConnector.GetDeleteResponse(theUri, delAssociate.AssociateID.ToString());
 
         // Pass converted data down to Data layer and await a pass/fail response
         return await client.DeleteAssociateAsync(associateLogic.MapToSoap(delAssociate));
@@ -215,7 +215,7 @@ namespace Workforce.Logic.Associates2.Domain
         }
         else
         {
-          if (addressLogic.ValidateSoapData(item) && item.Active == false)
+          if (addressLogic.ValidateSoapData(item) && !item.Active)
           {
             address.Add(addressLogic.MapToRest(item));
           }
@@ -312,7 +312,7 @@ namespace Workforce.Logic.Associates2.Domain
         }
         else
         {
-          if (batchLogic.ValidateSoapData(item) && item.Active == false)
+          if (batchLogic.ValidateSoapData(item) && !item.Active)
           {
             batches.Add(batchLogic.MapToRest(item));
           }
