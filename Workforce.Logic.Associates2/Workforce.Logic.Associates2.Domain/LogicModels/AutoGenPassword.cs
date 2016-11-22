@@ -228,7 +228,10 @@ namespace Workforce.Logic.Associates2.Domain.LogicModels
 
             // If we processed the last group, start all over.
             if (lastLeftGroupsOrderIdx == 0)
+            {
                lastLeftGroupsOrderIdx = leftGroupsOrder.Length - 1;
+            }
+
             // There are more unprocessed groups left.
             else
             {
