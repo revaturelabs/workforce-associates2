@@ -88,8 +88,9 @@ namespace Workforce.Logic.Associates2.Domain.LogicModels
       {
          // Make sure that input parameters are valid.
          if (minLength <= 0 || maxLength <= 0 || minLength > maxLength)
+         {
             return null;
-
+         }
          // Create a local array containing supported password characters
          // grouped by types. You can remove character groups from this
          // array, but doing so will weaken the password strength.
@@ -106,14 +107,18 @@ namespace Workforce.Logic.Associates2.Domain.LogicModels
 
          // Initially, all characters in each group are not used.
          for (int i = 0; i < charsLeftInGroup.Length; i++)
+         {
             charsLeftInGroup[i] = charGroups[i].Length;
+         }
 
          // Use this array to track (iterate through) unused character groups.
          int[] leftGroupsOrder = new int[charGroups.Length];
 
          // Initially, all character groups are not used.
          for (int i = 0; i < leftGroupsOrder.Length; i++)
+         {
             leftGroupsOrder[i] = i;
+         }
 
          // Because we cannot use the default randomizer, which is based on the
          // current time (it will produce the same "random" number within a
@@ -139,9 +144,13 @@ namespace Workforce.Logic.Associates2.Domain.LogicModels
 
          // Allocate appropriate memory for the password.
          if (minLength < maxLength)
+         {
             password = new char[random.Next(minLength, maxLength + 1)];
+         }
          else
+         {
             password = new char[minLength];
+         }
 
          // Index of the next character to be added to password.
          int nextCharIdx;
@@ -167,9 +176,13 @@ namespace Workforce.Logic.Associates2.Domain.LogicModels
             // first position, increment the second parameter of the Next
             // function call by one, i.e. lastLeftGroupsOrderIdx + 1.
             if (lastLeftGroupsOrderIdx == 0)
+            {
                nextLeftGroupsOrderIdx = 0;
+            }
             else
+            {
                nextLeftGroupsOrderIdx = random.Next(0, lastLeftGroupsOrderIdx);
+            }
 
             // Get the actual index of the character group, from which we will
             // pick the next character.
@@ -181,16 +194,21 @@ namespace Workforce.Logic.Associates2.Domain.LogicModels
             // If only one unprocessed character is left, pick it; otherwise,
             // get a random character from the unused character list.
             if (lastCharIdx == 0)
+            {
                nextCharIdx = 0;
+            }
             else
+            {
                nextCharIdx = random.Next(0, lastCharIdx + 1);
-
+            }
             // Add this character to the password.
             password[i] = charGroups[nextGroupIdx][nextCharIdx];
 
             // If we processed the last character in this group, start over.
             if (lastCharIdx == 0)
+            {
                charsLeftInGroup[nextGroupIdx] = charGroups[nextGroupIdx].Length;
+            }
             // There are more unprocessed characters left.
             else
             {

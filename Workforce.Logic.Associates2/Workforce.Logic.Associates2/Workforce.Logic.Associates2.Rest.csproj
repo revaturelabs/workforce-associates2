@@ -228,16 +228,16 @@
     <EmbeddedResource Include="Migrations\201609222340263_InitialCreate.resx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Workforce.Logic.Associates2.Domain\Workforce.Logic.Associates2.Domain.csproj">
-      <Project>{ebe55d36-fdd9-4131-825f-5ba410cbc1f7}</Project>
-      <Name>Workforce.Logic.Associates2.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\WFSReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Workforce.Logic.Associates2.Domain\Workforce.Logic.Associates2.Domain.csproj">
+      <Project>{ebe55d36-fdd9-4131-825f-5ba410cbc1f7}</Project>
+      <Name>Workforce.Logic.Associates2.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
