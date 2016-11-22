@@ -128,8 +128,10 @@ namespace Workforce.Logic.Associates2.Domain
         delAssociate.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(delAssociate.Gender)).GenderID.ToString();
         delAssociate.Batch = serviceBatches.FirstOrDefault(b => b.Name.Equals(delAssociate.Batch)).BatchID.ToString();
 
+        // The following two lines add an API call to the Housing side to trigger a secondary delete
         var thestring = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Host + "/workforce-housing-rest/api/housingdata";
         var theUri = new Uri(thestring);
+        // Deletes the associated Housing data attached to the associate being deleted
         var resultMessage = HRConnector.GetDeleteResponse(theUri, delAssociate.AssociateID.ToString());
 
         // Pass converted data down to Data layer and await a pass/fail response
