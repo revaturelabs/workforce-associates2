@@ -110,13 +110,19 @@ namespace Workforce.Logic.Associates2.Domain
     {
       if (associateLogic.ValidateRestData(delAssociate))
       {
+        //the following two lines gather all batches and all genders from the database
         var serviceGenders = await client.GetGenderAsync();
+        var serviceBatches = await client.GetBatchesAsync();
 
+        // the following two lines convert the batch/gender Name to the matching ID as a string
         delAssociate.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(delAssociate.Gender)).GenderID.ToString();
+        delAssociate.Batch = serviceBatches.FirstOrDefault(b => b.Name.Equals(delAssociate.Batch)).BatchID.ToString();
 
         var thestring = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Host + "/workforce-housing-rest/api/housingdata";
         var theUri = new Uri(thestring);
         var resultMessage = HRConnector.GetDeleteResponse(theUri, delAssociate.AssociateID.ToString());
+
+        // the following line awaits for a success/fail response after passing the data through the mapper and then down through the data layer
         return await client.DeleteAssociateAsync(associateLogic.MapToSoap(delAssociate));
       }
       else
@@ -132,18 +138,22 @@ namespace Workforce.Logic.Associates2.Domain
     {
       if (associateLogic.ValidateRestData(update))
       {
-        //collect all genders
+        // collect all genders and batches
         var serviceGenders = await client.GetGenderAsync();
-        //convert Gender Name to Gender ID
+        var serviceBatches = await client.GetBatchesAsync();
+        
+        // convert Gender Name and Batch Name to the associated ID
         update.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(update.Gender)).GenderID.ToString();
+        update.Batch = serviceBatches.FirstOrDefault(b => b.Name.Equals(update.Batch)).BatchID.ToString();
 
-        //store newly updated object and map it
+        // store newly updated object and map it
         var keepStatus = associateLogic.MapToSoap(update);
-        //maintain 'Active' status so that it doesn't auto convert to false
+
+        // maintain 'Active' status so that it doesn't auto convert to false
         keepStatus.Active = true;
 
-        //return converted information
-        return await client.UpdateAssociateAsync(keepStatus); //failing here
+        // return converted information to data layer
+        return await client.UpdateAssociateAsync(keepStatus);
       }
       else
       {

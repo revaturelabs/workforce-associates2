@@ -14,9 +14,9 @@ namespace Workforce.Logic.Associates2.Domain
    public class Associate
    {
       private readonly MapperConfiguration associateMapper = new MapperConfiguration(a => a.CreateMap<AssociateDao, AssociateDto>().ForMember(a1 => a1.Gender, opt => opt.MapFrom(a2 => a2.GenderID.ToString()))
-                                                                                                                                      .ForMember(a1 => a1.Batch, opt => opt.MapFrom(a2 => a2.BatchID.ToString())));
+                                                                                                                                      .ForMember(b1 => b1.Batch, opt => opt.MapFrom(b2 => b2.BatchID.ToString())));
       private readonly MapperConfiguration associateReverseMapper = new MapperConfiguration(a => a.CreateMap<AssociateDto, AssociateDao>().ForMember(a2 => a2.GenderID, m => m.MapFrom(a1 => int.Parse(a1.Gender)))
-                                                                                                                                             .ForMember(a2 => a2.BatchID, m => m.MapFrom(a1 => int.Parse(a1.Batch))));
+                                                                                                                                             .ForMember(b2 => b2.BatchID, m => m.MapFrom(b1 => int.Parse(b1.Batch))));
       private CoreValidator val = new CoreValidator();
 
       /// <summary>
