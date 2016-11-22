@@ -34,10 +34,12 @@ namespace Workforce.Logic.Associates2.Domain
       {
         if (associateLogic.ValidateSoapData(item))
         {
+          // The following lines parse the collected data and convert BatchID/GenderID to their associated Names
           var parse = associateLogic.MapToRest(item);
           parse.Gender = serviceGenders.FirstOrDefault(g => g.GenderID.Equals(item.GenderID)).Name;
           parse.Batch = serviceBatches.FirstOrDefault(b => b.BatchID.Equals(item.BatchID)).Name;
 
+          // Store the parsed data
           associate.Add(parse);
         }
       }
@@ -60,10 +62,12 @@ namespace Workforce.Logic.Associates2.Domain
         {
           if (associateLogic.ValidateSoapData(item) && item.Active)
           {
+            // The following lines parse the collected data and convert BatchID/GenderID to their associated Names
             var parse = associateLogic.MapToRest(item);
             parse.Gender = serviceGenders.FirstOrDefault(g => g.GenderID.Equals(item.GenderID)).Name;
             parse.Batch = serviceBatches.FirstOrDefault(b => b.BatchID.Equals(item.BatchID)).Name;
-
+            
+            // Store the parsed data
             associate.Add(parse);
           }
         }
@@ -71,9 +75,12 @@ namespace Workforce.Logic.Associates2.Domain
         {
           if (associateLogic.ValidateSoapData(item) && item.Active == false)
           {
+            // The following lines parse the collected data and convert BatchID/GenderID to their associated Names
             var parse = associateLogic.MapToRest(item);
             parse.Gender = serviceGenders.FirstOrDefault(g => g.GenderID.Equals(item.GenderID)).Name;
+            parse.Batch = serviceBatches.FirstOrDefault(b => b.BatchID.Equals(item.BatchID)).Name;
 
+            // Store the parsed data
             associate.Add(parse);
           }
         }
@@ -88,12 +95,15 @@ namespace Workforce.Logic.Associates2.Domain
     {
       if (associateLogic.ValidateRestData(newAssociate))
       {
+        // Collect all Genders and Batches
         var serviceGenders = await client.GetGenderAsync();
         var serviceBatch = await client.GetBatchesAsync();
-
+        
+        // Convert Name to ID
         newAssociate.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(newAssociate.Gender)).GenderID.ToString();
         newAssociate.Batch = serviceBatch.FirstOrDefault(b => b.Name.Equals(newAssociate.Batch)).BatchID.ToString();
-
+        
+        // Pass converted data down to Data layer and await a pass/fail response
         return await client.InsertAssociateAsync(associateLogic.MapToSoap(newAssociate));
       }
       else
@@ -122,7 +132,7 @@ namespace Workforce.Logic.Associates2.Domain
         var theUri = new Uri(thestring);
         var resultMessage = HRConnector.GetDeleteResponse(theUri, delAssociate.AssociateID.ToString());
 
-        // the following line awaits for a success/fail response after passing the data through the mapper and then down through the data layer
+        // Pass converted data down to Data layer and await a pass/fail response
         return await client.DeleteAssociateAsync(associateLogic.MapToSoap(delAssociate));
       }
       else
@@ -152,7 +162,7 @@ namespace Workforce.Logic.Associates2.Domain
         // maintain 'Active' status so that it doesn't auto convert to false
         keepStatus.Active = true;
 
-        // return converted information to data layer
+        // Pass converted data down to Data layer and await a pass/fail response
         return await client.UpdateAssociateAsync(keepStatus);
       }
       else
