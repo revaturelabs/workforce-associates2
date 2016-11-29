@@ -14,7 +14,7 @@ namespace Workforce.Logic.Associates2.Domain
    {
       private readonly MapperConfiguration genderMapper = new MapperConfiguration(g => g.CreateMap<GenderDao, GenderDto>());
       private readonly MapperConfiguration genderReverseMapper = new MapperConfiguration(g => g.CreateMap<GenderDto, GenderDao>());
-      private CoreValidator val = new CoreValidator();
+      private readonly CoreValidator val = new CoreValidator();
 
       /// <summary>
       /// Validates the data coming in from the data layer

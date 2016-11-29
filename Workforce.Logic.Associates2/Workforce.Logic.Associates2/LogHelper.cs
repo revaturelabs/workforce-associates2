@@ -8,7 +8,7 @@ using System.Web;
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace Workforce.Logic.Associates2
 {
-  public class LogHelper
+  public static class LogHelper
   {
     public static log4net.ILog GetLogger([CallerFilePath]string filename = "")
     {
@@ -19,12 +19,12 @@ namespace Workforce.Logic.Associates2
     {
       if (ex.InnerException != null)
       {
-        log.Error("The error was: " + ex.ToString());
+        log.Error("The error was: " + ex);
       }
 
       else
       {
-        log.Error("The error was: " + ex.InnerException.ToString());
+        log.Error("The error was: " + ex.InnerException);
       }
     }
   }

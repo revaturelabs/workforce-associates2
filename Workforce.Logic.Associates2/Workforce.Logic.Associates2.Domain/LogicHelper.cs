@@ -11,6 +11,9 @@ namespace Workforce.Logic.Associates2.Domain
 {
   public class LogicHelper
   {
+    /// <summary>
+    /// These are the primers for calling specific references
+    /// </summary>
     private readonly AssociateServiceClient client = new AssociateServiceClient();
     private readonly HousingRestConnector HRConnector = new HousingRestConnector();
     private readonly Associate associateLogic = new Associate();
@@ -34,10 +37,12 @@ namespace Workforce.Logic.Associates2.Domain
       {
         if (associateLogic.ValidateSoapData(item))
         {
+          // The following lines parse the collected data and convert BatchID/GenderID to their associated Names
           var parse = associateLogic.MapToRest(item);
           parse.Gender = serviceGenders.FirstOrDefault(g => g.GenderID.Equals(item.GenderID)).Name;
           parse.Batch = serviceBatches.FirstOrDefault(b => b.BatchID.Equals(item.BatchID)).Name;
 
+          // Store the parsed data
           associate.Add(parse);
         }
       }
@@ -60,20 +65,25 @@ namespace Workforce.Logic.Associates2.Domain
         {
           if (associateLogic.ValidateSoapData(item) && item.Active)
           {
+            // The following lines parse the collected data and convert BatchID/GenderID to their associated Names
             var parse = associateLogic.MapToRest(item);
             parse.Gender = serviceGenders.FirstOrDefault(g => g.GenderID.Equals(item.GenderID)).Name;
             parse.Batch = serviceBatches.FirstOrDefault(b => b.BatchID.Equals(item.BatchID)).Name;
-
+            
+            // Store the parsed data
             associate.Add(parse);
           }
         }
         else //return all deactive associates
         {
-          if (associateLogic.ValidateSoapData(item) && item.Active == false)
+          if (associateLogic.ValidateSoapData(item) && !item.Active)
           {
+            // The following lines parse the collected data and convert BatchID/GenderID to their associated Names
             var parse = associateLogic.MapToRest(item);
             parse.Gender = serviceGenders.FirstOrDefault(g => g.GenderID.Equals(item.GenderID)).Name;
+            parse.Batch = serviceBatches.FirstOrDefault(b => b.BatchID.Equals(item.BatchID)).Name;
 
+            // Store the parsed data
             associate.Add(parse);
           }
         }
@@ -88,12 +98,15 @@ namespace Workforce.Logic.Associates2.Domain
     {
       if (associateLogic.ValidateRestData(newAssociate))
       {
+        // Collect all Genders and Batches
         var serviceGenders = await client.GetGenderAsync();
         var serviceBatch = await client.GetBatchesAsync();
-
+        
+        // Convert Name to ID
         newAssociate.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(newAssociate.Gender)).GenderID.ToString();
         newAssociate.Batch = serviceBatch.FirstOrDefault(b => b.Name.Equals(newAssociate.Batch)).BatchID.ToString();
-
+        
+        // Pass converted data down to Data layer and await a pass/fail response
         return await client.InsertAssociateAsync(associateLogic.MapToSoap(newAssociate));
       }
       else
@@ -110,13 +123,21 @@ namespace Workforce.Logic.Associates2.Domain
     {
       if (associateLogic.ValidateRestData(delAssociate))
       {
+        //the following two lines gather all batches and all genders from the database
         var serviceGenders = await client.GetGenderAsync();
+        var serviceBatches = await client.GetBatchesAsync();
 
+        // the following two lines convert the batch/gender Name to the matching ID as a string
         delAssociate.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(delAssociate.Gender)).GenderID.ToString();
+        delAssociate.Batch = serviceBatches.FirstOrDefault(b => b.Name.Equals(delAssociate.Batch)).BatchID.ToString();
 
+        // The following two lines add an API call to the Housing side to trigger a secondary delete
         var thestring = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Host + "/workforce-housing-rest/api/housingdata";
         var theUri = new Uri(thestring);
-        var resultMessage = HRConnector.GetDeleteResponse(theUri, delAssociate.AssociateID.ToString());
+        // Deletes the associated Housing data attached to the associate being deleted
+        await HRConnector.GetDeleteResponse(theUri, delAssociate.AssociateID.ToString());
+
+        // Pass converted data down to Data layer and await a pass/fail response
         return await client.DeleteAssociateAsync(associateLogic.MapToSoap(delAssociate));
       }
       else
@@ -132,18 +153,22 @@ namespace Workforce.Logic.Associates2.Domain
     {
       if (associateLogic.ValidateRestData(update))
       {
-        //collect all genders
+        // collect all genders and batches
         var serviceGenders = await client.GetGenderAsync();
-        //convert Gender Name to Gender ID
+        var serviceBatches = await client.GetBatchesAsync();
+        
+        // convert Gender Name and Batch Name to the associated ID
         update.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(update.Gender)).GenderID.ToString();
+        update.Batch = serviceBatches.FirstOrDefault(b => b.Name.Equals(update.Batch)).BatchID.ToString();
 
-        //store newly updated object and map it
+        // store newly updated object and map it
         var keepStatus = associateLogic.MapToSoap(update);
-        //maintain 'Active' status so that it doesn't auto convert to false
+
+        // maintain 'Active' status so that it doesn't auto convert to false
         keepStatus.Active = true;
 
-        //return converted information
-        return await client.UpdateAssociateAsync(keepStatus); //failing here
+        // Pass converted data down to Data layer and await a pass/fail response
+        return await client.UpdateAssociateAsync(keepStatus);
       }
       else
       {
@@ -190,7 +215,7 @@ namespace Workforce.Logic.Associates2.Domain
         }
         else
         {
-          if (addressLogic.ValidateSoapData(item) && item.Active == false)
+          if (addressLogic.ValidateSoapData(item) && !item.Active)
           {
             address.Add(addressLogic.MapToRest(item));
           }
@@ -287,7 +312,7 @@ namespace Workforce.Logic.Associates2.Domain
         }
         else
         {
-          if (batchLogic.ValidateSoapData(item) && item.Active == false)
+          if (batchLogic.ValidateSoapData(item) && !item.Active)
           {
             batches.Add(batchLogic.MapToRest(item));
           }

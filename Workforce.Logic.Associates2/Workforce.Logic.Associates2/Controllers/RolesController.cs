@@ -109,6 +109,10 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
     /// <summary>
     /// This will find a user in a given role
     /// </summary>
+    /// <IMPORTANT NOTE>
+    /// This method must be modified so that it talks to a method inside of a class instead of computing
+    /// the method inside itself as this is suppose to be a simple API call to an internal method
+    /// </IMPORTANT>
     /// <param name="model"></param>
     /// <returns></returns>
     [Route("ManageUsersInRole")]

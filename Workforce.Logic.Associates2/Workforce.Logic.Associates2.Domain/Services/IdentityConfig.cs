@@ -14,7 +14,7 @@ namespace Workforce.Logic.Associates2.Domain.Services
   {
     /// <summary>
     /// This method will call the
-    /// configSendEmailasync method
+    /// ConfigSendEmailAsync method
     /// so that an email can be sent
     /// to the designated person(s)
     /// </summary>
@@ -22,7 +22,7 @@ namespace Workforce.Logic.Associates2.Domain.Services
     /// <returns></returns>
     public async Task SendAsync(IdentityMessage message)
     {
-      await configSendEmailasync(message);
+      await ConfigSendEmailAsync(message);
     }
     
 
@@ -35,7 +35,7 @@ namespace Workforce.Logic.Associates2.Domain.Services
     /// </summary>
     /// <param name="message"></param>
     /// <returns></returns>
-    private async Task configSendEmailasync(IdentityMessage message)
+    private async Task ConfigSendEmailAsync(IdentityMessage message)
     {
       var email = new MailMessage();
 

@@ -19,8 +19,8 @@ namespace Workforce.Logic.Associates2.Rest.Models
   /// </summary>
   public class ModelFactory
   {
-    private UrlHelper urlHelper;
-    private ApplicationUserManager AppUserManager;
+    private readonly UrlHelper urlHelper;
+    private readonly ApplicationUserManager AppUserManager;
 
     public ModelFactory(HttpRequestMessage request, ApplicationUserManager appUserManager)
     {

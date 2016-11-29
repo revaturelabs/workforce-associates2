@@ -14,7 +14,7 @@ namespace Workforce.Logic.Associates2.Domain
    {
       private readonly MapperConfiguration batchMapper = new MapperConfiguration(b => b.CreateMap<BatchDao, BatchDto>());
       private readonly MapperConfiguration batchReverseMapper = new MapperConfiguration(b => b.CreateMap<BatchDto, BatchDao>());
-      private CoreValidator val = new CoreValidator();
+      private readonly CoreValidator val = new CoreValidator();
 
       /// <summary>
       /// Validates the data coming in from the data layer

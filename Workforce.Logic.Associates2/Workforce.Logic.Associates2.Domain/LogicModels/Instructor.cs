@@ -14,7 +14,7 @@ namespace Workforce.Logic.Associates2.Domain
    {
       private readonly MapperConfiguration instructorMapper = new MapperConfiguration(i => i.CreateMap<InstructorDao, InstructorDto>().ForMember(i1 => i1.InstructorID, m => m.MapFrom(i2 => i2.InstructorId)));
       private readonly MapperConfiguration instructorReverseMapper = new MapperConfiguration(i => i.CreateMap<InstructorDto, InstructorDao>().ForMember(i1 => i1.InstructorId, m => m.MapFrom(i2 => i2.InstructorID)));
-      private CoreValidator val = new CoreValidator();
+      private readonly CoreValidator val = new CoreValidator();
 
       /// <summary>
       /// Validates the data coming in from the data layer
