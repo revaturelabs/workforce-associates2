@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ec705527-9011-4e35-be02-35a751480bd7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d4b1d92c-8969-4a87-bc6f-1027823f2747" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://ec2-54-197-33-154.compute-1.amazonaws.com/workforce-associate-soap/AssociateService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AssociateService.disco" MetadataType="Disco" ID="5e212d42-63d7-4ead-b01a-fca117eb9b9e" SourceId="1" SourceUrl="http://ec2-54-197-33-154.compute-1.amazonaws.com/workforce-associate-soap/AssociateService.svc?disco" />
-    <MetadataFile FileName="AssociateService.xsd" MetadataType="Schema" ID="64179408-734d-4582-952f-4686a0a89fc5" SourceId="1" SourceUrl="http://ec2-54-197-33-154.compute-1.amazonaws.com/workforce-associate-soap/AssociateService.svc?xsd=xsd0" />
-    <MetadataFile FileName="AssociateService.wsdl" MetadataType="Wsdl" ID="b565028b-ea34-436a-aa4d-3c5ef17e59d4" SourceId="1" SourceUrl="http://ec2-54-197-33-154.compute-1.amazonaws.com/workforce-associate-soap/AssociateService.svc?wsdl" />
-    <MetadataFile FileName="AssociateService1.xsd" MetadataType="Schema" ID="5cf9eae0-346c-465f-92e1-7bdf86536ae0" SourceId="1" SourceUrl="http://ec2-54-197-33-154.compute-1.amazonaws.com/workforce-associate-soap/AssociateService.svc?xsd=xsd2" />
-    <MetadataFile FileName="AssociateService2.xsd" MetadataType="Schema" ID="bef0e83e-fd55-40d3-b50e-83a6be69aa55" SourceId="1" SourceUrl="http://ec2-54-197-33-154.compute-1.amazonaws.com/workforce-associate-soap/AssociateService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AssociateService.disco" MetadataType="Disco" ID="c1c592b9-ecc8-48e0-b6a4-f51f4233dce2" SourceId="1" SourceUrl="http://ec2-54-197-33-154.compute-1.amazonaws.com/workforce-associate-soap/AssociateService.svc?disco" />
+    <MetadataFile FileName="AssociateService.xsd" MetadataType="Schema" ID="5059e9ef-9a37-4a24-8521-2ca3d3945675" SourceId="1" SourceUrl="http://ec2-54-197-33-154.compute-1.amazonaws.com/workforce-associate-soap/AssociateService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AssociateService.wsdl" MetadataType="Wsdl" ID="388860d1-27aa-48bb-9e84-cd0b6673073a" SourceId="1" SourceUrl="http://ec2-54-197-33-154.compute-1.amazonaws.com/workforce-associate-soap/AssociateService.svc?wsdl" />
+    <MetadataFile FileName="AssociateService1.xsd" MetadataType="Schema" ID="334946e7-af81-47b5-8d7a-699fb40203a9" SourceId="1" SourceUrl="http://ec2-54-197-33-154.compute-1.amazonaws.com/workforce-associate-soap/AssociateService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AssociateService2.xsd" MetadataType="Schema" ID="fe21788b-2ead-4f9c-b368-7284e6d8ddbe" SourceId="1" SourceUrl="http://ec2-54-197-33-154.compute-1.amazonaws.com/workforce-associate-soap/AssociateService.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
