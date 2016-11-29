@@ -15,6 +15,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
   public class GenderController : ApiController
     {
       private readonly LogicHelper logic = new LogicHelper();
+      private static readonly log4net.ILog logger = LogHelper.GetLogger();
 
       /// <summary>
       /// This is the base 'Get' method for Gender
@@ -22,7 +23,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> Get()
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllGenders());
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllGenders());
+          logger.Info("Get all genders successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -31,7 +43,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpPost]
       public async Task<HttpResponseMessage> Post([FromBody]GenderDto gender)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewGender(gender));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewGender(gender));
+          logger.Info("Add new gender successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -40,7 +63,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpDelete]
       public async Task<HttpResponseMessage> Delete([FromBody]GenderDto gender)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateGender(gender));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateGender(gender));
+          logger.Info("Delete gender successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -49,7 +83,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpPut]
       public async Task<HttpResponseMessage> Put([FromBody]GenderDto gender)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateGender(gender));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateGender(gender));
+          logger.Info("Update gender successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
    }
 }

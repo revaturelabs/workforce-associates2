@@ -15,6 +15,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
   public class AddressController : ApiController
    {
       private readonly LogicHelper logic = new LogicHelper();
+      private static readonly log4net.ILog logger = LogHelper.GetLogger();
 
       /// <summary>
       /// This 'Get' method returns all Associates regardless of status
@@ -22,7 +23,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> FindAll()
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllAddresses());
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllAddresses());
+          logger.Info("Get all addresses successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -31,7 +43,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> FindByStatus(string status)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAddressesByStatus(status));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.GetAddressesByStatus(status));
+          logger.Info("Get all addresses by status successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -40,7 +63,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpPost]
       public async Task<HttpResponseMessage> Post([FromBody]AddressDto address)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewAddress(address));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewAddress(address));
+          logger.Info("Add new address successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        } 
       }
 
       /// <summary>
@@ -49,7 +83,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpDelete]
       public async Task<HttpResponseMessage> Delete([FromBody]AddressDto address)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateAddress(address));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateAddress(address));
+          logger.Info("Delete address successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -58,7 +103,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpPut]
       public async Task<HttpResponseMessage> Put([FromBody]AddressDto address)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateAddress(address));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateAddress(address));
+          logger.Info("Update address successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
    }
 }

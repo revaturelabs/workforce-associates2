@@ -15,6 +15,7 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
   public class InstructorController : ApiController
     {
       private readonly LogicHelper logic = new LogicHelper();
+      private static readonly log4net.ILog logger = LogHelper.GetLogger();
 
       /// <summary>
       /// This 'Get' method returns all Instructors regardless of status
@@ -22,7 +23,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> FindAll()
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllInstructors());
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllInstructors());
+          logger.Info("Get all instructors successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -31,7 +43,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> FindByStatus(string status)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetInstructorsByStatus(status));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.GetInstructorsByStatus(status));
+          logger.Info("Get all instructors by status successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -40,7 +63,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpPost]
       public async Task<HttpResponseMessage> Post([FromBody]InstructorDto instructor)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewInstructor(instructor));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewInstructor(instructor));
+          logger.Info("Create new instructor successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
       }
 
       /// <summary>
@@ -50,7 +84,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpDelete]
       public async Task<HttpResponseMessage> Delete([FromBody]InstructorDto instructor)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateInstructor(instructor));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateInstructor(instructor));
+          logger.Info("Delete instructor successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        } 
       }
 
       /// <summary>
@@ -59,7 +104,18 @@ namespace Workforce.Logic.Associates2.Rest.Controllers
       [HttpPut]
       public async Task<HttpResponseMessage> Put([FromBody]InstructorDto instructor)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateInstructor(instructor));
+        try
+        {
+          var response = Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateInstructor(instructor));
+          logger.Info("Update instructor successful");
+          return response;
+        }
+
+        catch (Exception ex)
+        {
+          LogHelper.ErrorLogger(logger, ex);
+          return Request.CreateResponse(HttpStatusCode.BadRequest);
+        } 
       }
    }
 }
