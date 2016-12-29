@@ -70,7 +70,6 @@ namespace Workforce.Data.Associates2.Domain
       return db.Instructor.ToList();
     }
     #endregion
-
     #region FeliceInserts
     /// <summary>
     /// Inserts Address into the database
